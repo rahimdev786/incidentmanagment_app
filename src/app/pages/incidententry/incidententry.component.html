@@ -1,0 +1,48 @@
+<form [formGroup]="incidentEntryForm" (ngSubmit)="submitForm()">
+    <div class="container">
+        <div class="row text-md-center">
+            <div class="col-md h3 text-bg-info text-black-50">Incident Entry Form</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md">
+                <mat-form-field appearance="outline">
+                    <mat-label>Incident Name</mat-label>
+                    <input matInput placeholder="Name" formControlName="incidentName">
+                    <mat-hint>name</mat-hint>
+                    <mat-error>name is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md">
+                <mat-form-field appearance="outline">
+                    <mat-label>Assign To</mat-label>
+                    <mat-select formControlName="incidentAssignTo">
+                        @for(company of createdToIncident; track company){
+                        <mat-option [value]="company.comapany">{{company.campnaycode}}</mat-option>
+                        }
+                    </mat-select>
+                    <mat-hint>Assign</mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput placeholder="Description" formControlName="incidentDescription"></textarea>
+                    <mat-hint>notes</mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row mt-3 mb-3">
+            <div class="col-md">
+                <button type="button" mat-dialog-actions class="btn btn-danger w-100"
+                    mat-dialog-close="false">Cancel</button>
+            </div>
+            <div class="col-md">
+                <button type="submit" mat-dialog-actions class="btn btn-success w-100">{{data ?
+                    'Update':'Save'}}</button>
+            </div>
+        </div>
+    </div>
+</form>

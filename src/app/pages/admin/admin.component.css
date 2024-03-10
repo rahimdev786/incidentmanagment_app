@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+}
+
+td {
+    width: auto;
+}
+
+th {
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.table-responsive {
+    max-height: 500px;
+}
+
+.mat-paginator-sticky {
+    bottom: 0px;
+    position: sticky;
+    z-index: 10;
+}
