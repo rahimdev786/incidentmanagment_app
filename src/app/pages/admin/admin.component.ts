@@ -10,14 +10,16 @@ import { IncidententryComponent } from '../incidententry/incidententry.component
 import { ApiService } from '../../service/api.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { CommanpageComponent } from "../commanpage/commanpage.component";
+import { AssignComponent } from '../assign/assign.component';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [ModulesModule, MatFormFieldModule, MatInputModule, MatTableModule,
-    MatSortModule, MatPaginatorModule, MatDialogModule, MatIconModule, MatButtonModule],
   templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css'
+  styleUrl: './admin.component.css',
+  imports: [ModulesModule, MatFormFieldModule, MatInputModule, MatTableModule,
+    MatSortModule, MatPaginatorModule, MatDialogModule, MatIconModule, MatButtonModule, CommanpageComponent]
 })
 
 
@@ -43,6 +45,11 @@ export class AdminComponent implements OnInit {
       error: console.log
     });
   }
+
+  openAssignToDialougepopup() {
+    this._dialogue.open(AssignComponent);
+  }
+
 
   ngOnInit(): void {
     this.getIncidentRecords()

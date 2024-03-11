@@ -5,7 +5,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModulesModule } from '../../module/modules/modules.module';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../../service/api.service';
@@ -39,9 +39,9 @@ export class IncidententryComponent implements OnInit {
   }
 
   incidentEntryForm = new FormGroup({
-    incidentName: new FormControl(''),
-    incidentAssignTo: new FormControl(''),
-    incidentDescription: new FormControl('')
+    incidentName: new FormControl('', Validators.required),
+    incidentAssignTo: new FormControl('', Validators.required),
+    incidentDescription: new FormControl('', Validators.required)
   })
 
   submitForm() {
@@ -105,6 +105,10 @@ export class IncidententryComponent implements OnInit {
 
   resetForm() {
     this.incidentEntryForm.reset()
+  }
+
+  cancelBtn() {
+    this._dialouge.close(true);
   }
 }
 
